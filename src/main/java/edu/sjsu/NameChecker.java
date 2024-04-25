@@ -13,7 +13,7 @@ public class NameChecker {
      */
     public static boolean check(String input) {
         // TODO: implement
-        String namex ="^[a-zA-Z][a-zA-Z-']{1-39}$";
+        String namex ="^[a-zA-Z][a-zA-Z-']{1,39}$";
         Pattern p = Pattern.compile(namex);
         Matcher m = p.matcher(input);
 
