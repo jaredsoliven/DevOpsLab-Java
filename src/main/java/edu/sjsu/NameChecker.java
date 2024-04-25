@@ -31,7 +31,7 @@ public class NameChecker {
                 if(single == 2) {
                     return false;
                 }
-                if(hiphen >= 2 && input.charAt(i-1) == "-") {
+                if(hiphen >= 2 && input.charAt(i-1) == '-') {
                     return false;
                 }
             }
