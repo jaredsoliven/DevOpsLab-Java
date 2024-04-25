@@ -1,4 +1,5 @@
 package edu.sjsu;
+import java.util.regex.*;
 
 public class NameChecker {
     /**
@@ -12,7 +13,15 @@ public class NameChecker {
      */
     public static boolean check(String input) {
         // TODO: implement
-
-        return false;
+        int inLength = input.length();
+        if(inLength < 2 || inLength > 40) { // check if string length fits
+            return false;
+        } else { // length of string is valid
+            if(input.contains("'") || input.contains("--") || input.charAt(0) == '-' || input.charAt(0) == '\'') {
+                return false;
+            } else {
+                return true;
+            }
+        }
     }
 }
