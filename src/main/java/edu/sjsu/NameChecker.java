@@ -13,15 +13,30 @@ public class NameChecker {
      */
     public static boolean check(String input) {
         // TODO: implement
-        int inLength = input.length();
-        if(inLength < 2 || inLength > 40) { // check if string length fits
-            return false;
-        } else { // length of string is valid
-            if(input.contains("'") || input.contains("--") || input.charAt(0) == '-' || input.charAt(0) == '\'') {
-                return false;
-            } else {
-                return true;
+        String namex ="^[a-zA-Z][a-zA-Z-']{1-39}$";
+        Pattern p = Pattern.compile(namex);
+        Matcher m = p.matcher(input);
+
+        if(m.find()) {
+            int hiphen = 0;
+            int single = 0;
+
+            for (int i = 0; i < input.length(); i++) {
+                if (input.charAt(i) == '-') {
+                    hiphen++;
+                }
+                if(input.charAt(i) == '\'') {
+                    single++;
+                }
+                if(single == 2) {
+                    return false;
+                }
+                if(hiphen >= 2 && input.charAt(i-1) == "-") {
+                    return false;
+                }
             }
+            return true;
         }
+        return false;
     }
 }
